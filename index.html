@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raio-X Semanal da Operação | Pastel da Drica</title>
+  <meta name="description" content="Raio-X semanal da operação Pastel da Drica pela Osasco Express: leitura executiva, relacionamento, decisão operacional, plano e fechamento." />
+  <style>
+    :root{
+      --red:#EA1D2C;
+      --redDark:#A5111B;
+      --ink:#101828;
+      --text:#344054;
+      --muted:#667085;
+      --bg:#F6F7F9;
+      --card:#FFFFFF;
+      --line:#E5E7EB;
+      --soft:#FFF1F2;
+      --green:#087443;
+      --greenBg:#ECFDF3;
+      --amber:#92400E;
+      --amberBg:#FFFBEB;
+      --blue:#1D4ED8;
+      --blueBg:#EFF6FF;
+      --radius:24px;
+      --shadow:0 18px 45px rgba(16,24,40,.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:18px;
+    }
+
+    .hero{
+      color:white;
+      border-radius:30px;
+      padding:34px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,.22), transparent 28%),
+        linear-gradient(135deg,var(--red),var(--redDark));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 12px;
+      margin-bottom:16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.16);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(34px,5vw,58px);
+      line-height:.98;
+      letter-spacing:-.055em;
+    }
+
+    .hero p{
+      max-width:870px;
+      margin:18px 0 0;
+      color:rgba(255,255,255,.92);
+      font-size:18px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .hero-card{
+      min-height:92px;
+      padding:16px;
+      border-radius:18px;
+      background:white;
+      color:var(--ink);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .hero-card span{
+      display:block;
+      margin-bottom:8px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .hero-card strong{
+      display:block;
+      color:var(--ink);
+      font-size:25px;
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+
+    .hero-card .status{
+      color:#B45309;
+    }
+
+    .print-row{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:20px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:12px 16px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+      cursor:pointer;
+      background:#fff;
+      color:var(--red);
+    }
+
+    .section{
+      margin:22px 0 0;
+      scroll-margin-top:18px;
+    }
+
+    .section-title{
+      margin:0 0 12px;
+    }
+
+    .kicker{
+      display:inline-block;
+      color:var(--red);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-bottom:8px;
+    }
+
+    h2{
+      margin:0;
+      color:var(--ink);
+      font-size:clamp(26px,3.2vw,38px);
+      line-height:1.05;
+      letter-spacing:-.045em;
+    }
+
+    h3{
+      margin:0 0 10px;
+      color:var(--ink);
+      font-size:22px;
+      line-height:1.1;
+      letter-spacing:-.03em;
+    }
+
+    .lead{
+      max-width:820px;
+      margin:8px 0 16px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
+    .col-12{grid-column:span 12}
+    .col-8{grid-column:span 8}
+    .col-7{grid-column:span 7}
+    .col-6{grid-column:span 6}
+    .col-5{grid-column:span 5}
+    .col-4{grid-column:span 4}
+
+    .text{
+      margin:0 0 12px;
+      color:#344054;
+      font-size:16px;
+    }
+
+    .text strong{color:var(--ink)}
+
+    .metric{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#FAFAFA;
+      padding:15px;
+      margin-bottom:10px;
+    }
+
+    .metric span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+      margin-bottom:7px;
+    }
+
+    .metric strong{
+      display:block;
+      color:var(--ink);
+      font-size:25px;
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+
+    .metric p{
+      margin:7px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .callout{
+      border-radius:18px;
+      padding:16px;
+      margin-top:14px;
+      font-size:15px;
+    }
+
+    .callout.dark{
+      background:#111827;
+      color:#fff;
+    }
+
+    .callout.dark p{
+      margin:0 0 12px;
+      color:rgba(255,255,255,.9);
+    }
+
+    .callout.dark p:last-child{margin-bottom:0}
+
+    .callout.good{
+      background:var(--greenBg);
+      border:1px solid #BBF7D0;
+      color:#065F46;
+    }
+
+    .callout.warn{
+      background:var(--amberBg);
+      border:1px solid #FDE68A;
+      color:var(--amber);
+    }
+
+    .callout.info{
+      background:var(--blueBg);
+      border:1px solid #BFDBFE;
+      color:#1E40AF;
+    }
+
+    .table-wrap{
+      width:100%;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+      font-size:14px;
+    }
+
+    th,td{
+      padding:12px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:top;
+      overflow-wrap:anywhere;
+    }
+
+    th{
+      background:#F9FAFB;
+      color:#344054;
+      font-size:13px;
+    }
+
+    tr:last-child td{border-bottom:0}
+
+    .right{text-align:right}
+    .bold{font-weight:900}
+    .red{color:var(--red)}
+    .green{color:var(--green)}
+    .muted{color:var(--muted)}
+    .soft-row{background:#FFF7F7}
+
+    .list{
+      display:grid;
+      gap:10px;
+    }
+
+    .list-item{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#FAFAFA;
+      padding:14px;
+    }
+
+    .list-item strong{
+      display:block;
+      color:var(--ink);
+      margin-bottom:4px;
+    }
+
+    .list-item span{
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .tag{
+      display:inline-block;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--red);
+      font-size:12px;
+      font-weight:900;
+      padding:5px 9px;
+    }
+
+    .decision-card{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .decision{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#FAFAFA;
+      padding:15px;
+    }
+
+    .decision strong{
+      display:block;
+      color:var(--ink);
+      font-size:18px;
+      margin-bottom:4px;
+    }
+
+    .decision span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .relationship-box{
+      background:#111827;
+      color:white;
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .relationship-box p{
+      margin:0 0 12px;
+      color:rgba(255,255,255,.9);
+      font-size:16px;
+    }
+
+    .relationship-box p:last-child{margin-bottom:0}
+
+    .footer{
+      padding:26px 0 8px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media(max-width:900px){
+      .wrap{padding:12px}
+      .hero{padding:24px;border-radius:24px}
+      .hero-grid{grid-template-columns:repeat(2,1fr)}
+      .col-8,.col-7,.col-6,.col-5,.col-4{grid-column:span 12}
+      .decision-card{grid-template-columns:1fr}
+      .card{padding:17px}
+    }
+
+    @media(max-width:720px){
+      .hero-grid{grid-template-columns:1fr}
+      .print-row{justify-content:flex-start}
+      .table-wrap{border:0;background:transparent;overflow:visible}
+      table,thead,tbody,tr,th,td{display:block;width:100%}
+      thead{display:none}
+      tr{
+        background:#fff;
+        border:1px solid var(--line);
+        border-radius:16px;
+        margin-bottom:10px;
+        padding:10px;
+      }
+      td{
+        display:flex;
+        justify-content:space-between;
+        gap:14px;
+        text-align:right;
+        border-bottom:1px solid #EEF2F7;
+        padding:9px 8px;
+      }
+      td:last-child{border-bottom:0}
+      td::before{
+        content:attr(data-label);
+        min-width:42%;
+        text-align:left;
+        color:#344054;
+        font-weight:900;
+      }
+      .right{text-align:right}
+    }
+
+    @media print{
+      body{background:#fff}
+      .print-row{display:none}
+      .wrap{max-width:100%;padding:0}
+      .hero{box-shadow:none;border-radius:0}
+      .card{box-shadow:none}
+      .section{page-break-inside:auto}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Raio-X Semanal da Operação | Osasco Express</span>
+      <h1>Pastel da Drica: boa venda, volume forte e plano claro para evoluir</h1>
+      <p>Período analisado: <strong>13/05/2026 a 17/05/2026</strong>. Este feedback mostra o que aconteceu, onde a operação apertou e o que recomendamos para a próxima semana.</p>
+
+      <div class="hero-grid">
+        <div class="hero-card"><span>Venda conhecida iFood</span><strong>R$ 8.535,53</strong></div>
+        <div class="hero-card"><span>+ faturamento da casa</span><strong>não informado</strong></div>
+        <div class="hero-card"><span>Entregas finalizadas</span><strong>302</strong></div>
+        <div class="hero-card"><span>Status da semana</span><strong class="status">Atenção</strong></div>
+      </div>
+
+      <div class="print-row">
+        <button class="btn" onclick="window.print()">Salvar em PDF</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="kicker">01 | Cuidado com a operação</span>
+        <h2>O que vimos na semana</h2>
+        <p class="lead">A primeira leitura é positiva: a loja vendeu, teve volume e mostrou força no fim de semana. O ajuste necessário é operacional, não comercial.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-7">
+          <h3>Resumo para a Adriana</h3>
+          <p class="text">Adriana, a operação teve boa movimentação no período, principalmente no fim de semana. O iFood registrou <strong>208 pedidos</strong>, com <strong>R$ 8.535,53</strong> em vendas conhecidas e ticket médio de <strong>R$ 41,04</strong>.</p>
+          <p class="text">Além do iFood, também saíram <strong>93 pedidos da casa/manual</strong> pela logística própria. O valor desses pedidos não aparece no relatório, então tratamos como <strong>+ faturamento da casa</strong>, sem estimar número.</p>
+          <p class="text">A operação totalizou <strong>302 entregas finalizadas</strong>. Esse é o número que usamos para entender a demanda real da rua.</p>
+
+          <div class="relationship-box">
+            <p>A leitura principal é simples: a loja está com volume, mas o fim de semana precisa ser planejado com mais cuidado, principalmente quando houver taxa grátis.</p>
+            <p>Nosso objetivo é manter a entrega organizada, reduzir risco de atraso e proteger a experiência do cliente final.</p>
+          </div>
+        </div>
+
+        <div class="card col-5">
+          <h3>Decisão da semana</h3>
+          <div class="metric"><span>Segunda a quinta</span><strong>2 entregadores</strong><p>Base atual para dias de menor pressão.</p></div>
+          <div class="metric"><span>Sexta, sábado e domingo</span><strong>4 entregadores</strong><p>Quando não houver taxa grátis ativa.</p></div>
+          <div class="metric"><span>Com taxa grátis ativa</span><strong>5 entregadores</strong><p>Promoção aumenta volume e exige reforço.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="kicker">02 | Operação real</span>
+        <h2>O volume que precisa ser considerado</h2>
+        <p class="lead">Não dá para olhar apenas o iFood. Os pedidos da casa também ocupam entregador, rota, despacho e tempo de operação.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-12">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dia</th>
+                  <th class="right">iFood</th>
+                  <th class="right">Casa/manual</th>
+                  <th class="right">Total real</th>
+                  <th class="right">Recomendação</th>
+                  <th>Leitura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Dia">Quarta</td>
+                  <td data-label="iFood" class="right">14</td>
+                  <td data-label="Casa/manual" class="right">12</td>
+                  <td data-label="Total real" class="right bold">26</td>
+                  <td data-label="Recomendação" class="right bold red">2</td>
+                  <td data-label="Leitura">Leve</td>
+                </tr>
+                <tr>
+                  <td data-label="Dia">Quinta</td>
+                  <td data-label="iFood" class="right">24</td>
+                  <td data-label="Casa/manual" class="right">16</td>
+                  <td data-label="Total real" class="right bold">40</td>
+                  <td data-label="Recomendação" class="right bold red">2</td>
+                  <td data-label="Leitura">No limite para 2</td>
+                </tr>
+                <tr>
+                  <td data-label="Dia">Sexta</td>
+                  <td data-label="iFood" class="right">33</td>
+                  <td data-label="Casa/manual" class="right">20</td>
+                  <td data-label="Total real" class="right bold">53</td>
+                  <td data-label="Recomendação" class="right bold red">4 ou 5</td>
+                  <td data-label="Leitura">4 sem taxa grátis; 5 com taxa grátis</td>
+                </tr>
+                <tr class="soft-row">
+                  <td data-label="Dia">Sábado</td>
+                  <td data-label="iFood" class="right">67</td>
+                  <td data-label="Casa/manual" class="right">24</td>
+                  <td data-label="Total real" class="right bold red">91</td>
+                  <td data-label="Recomendação" class="right bold red">4 ou 5</td>
+                  <td data-label="Leitura">4 sem taxa grátis; 5 com taxa grátis</td>
+                </tr>
+                <tr class="soft-row">
+                  <td data-label="Dia">Domingo</td>
+                  <td data-label="iFood" class="right">71</td>
+                  <td data-label="Casa/manual" class="right">21</td>
+                  <td data-label="Total real" class="right bold red">92</td>
+                  <td data-label="Recomendação" class="right bold red">4 ou 5</td>
+                  <td data-label="Leitura">4 sem taxa grátis; 5 com taxa grátis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="decision-card">
+            <div class="decision"><strong>Pico a proteger</strong><span>O período mais sensível é das 18h às 22h.</span></div>
+            <div class="decision"><strong>Regra de reforço</strong><span>Se tiver taxa grátis ativa na sexta, sábado ou domingo, trabalhar com 5 entregadores.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="kicker">03 | Taxa grátis e maturidade comercial</span>
+        <h2>Promoção precisa vir com regra operacional</h2>
+        <p class="lead">A taxa grátis pode vender mais, mas precisa ser acompanhada para não concentrar custo e atraso no horário mais forte.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-7">
+          <h3>Impacto do fim de semana</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dia</th>
+                  <th class="right">Cliente pagou</th>
+                  <th class="right">Custo logística</th>
+                  <th class="right">Diferença absorvida</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Dia">Sábado</td>
+                  <td data-label="Cliente pagou" class="right">R$ 254,17</td>
+                  <td data-label="Custo logística" class="right">R$ 819,00</td>
+                  <td data-label="Diferença absorvida" class="right bold red">R$ 564,83</td>
+                </tr>
+                <tr>
+                  <td data-label="Dia">Domingo</td>
+                  <td data-label="Cliente pagou" class="right">R$ 239,82</td>
+                  <td data-label="Custo logística" class="right">R$ 782,00</td>
+                  <td data-label="Diferença absorvida" class="right bold red">R$ 542,18</td>
+                </tr>
+                <tr>
+                  <td data-label="Dia" class="bold">Total FDS</td>
+                  <td data-label="Cliente pagou" class="right bold">R$ 493,99</td>
+                  <td data-label="Custo logística" class="right bold">R$ 1.601,00</td>
+                  <td data-label="Diferença absorvida" class="right bold red">R$ 1.107,01</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout warn">
+            <strong>Leitura cuidadosa:</strong> a taxa grátis não precisa ser eliminada. Ela precisa ter regra para não concentrar custo no momento de maior volume.
+          </div>
+        </div>
+
+        <div class="card col-5">
+          <h3>Como usar melhor</h3>
+          <div class="list">
+            <div class="list-item"><strong>Pedido mínimo</strong><span>Frete grátis acima de um valor definido.</span></div>
+            <div class="list-item"><strong>Raio curto</strong><span>Evitar taxa grátis em entregas longas.</span></div>
+            <div class="list-item"><strong>Fora do pico</strong><span>Evitar taxa grátis aberta das 18h às 22h.</span></div>
+            <div class="list-item"><strong>Com reforço</strong><span>Se ativar taxa grátis, subir para 5 entregadores.</span></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <h3>Por origem</h3>
+          <p class="lead">Nos pedidos da casa, o cliente final paga a taxa da entrega. A diferença apareceu principalmente no iFood por causa da taxa grátis no fim de semana.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Origem</th>
+                  <th class="right">Pedidos</th>
+                  <th class="right">Cliente pagou</th>
+                  <th class="right">Custo logística</th>
+                  <th class="right">Diferença</th>
+                  <th>Leitura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Origem" class="bold">iFood</td>
+                  <td data-label="Pedidos" class="right">209</td>
+                  <td data-label="Cliente pagou" class="right">R$ 667,99</td>
+                  <td data-label="Custo logística" class="right">R$ 1.773,40</td>
+                  <td data-label="Diferença" class="right bold red">R$ 1.105,41</td>
+                  <td data-label="Leitura">Maior diferença por taxa grátis no fim de semana.</td>
+                </tr>
+                <tr>
+                  <td data-label="Origem" class="bold">Casa/manual</td>
+                  <td data-label="Pedidos" class="right">93</td>
+                  <td data-label="Cliente pagou" class="right">R$ 703,60</td>
+                  <td data-label="Custo logística" class="right">R$ 703,60</td>
+                  <td data-label="Diferença" class="right bold green">R$ 0,00</td>
+                  <td data-label="Leitura">Equilibrado na taxa de entrega.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="kicker">04 | Experiência do cliente final</span>
+        <h2>Atrasos, cancelamentos e cardápio</h2>
+        <p class="lead">Aqui separamos o que precisa de ação operacional, conferência da loja e ajuste comercial.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Atrasos e ocorrências</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ocorrência</th>
+                  <th class="right">Qtd.</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Ocorrência">Atraso</td>
+                  <td data-label="Qtd." class="right bold red">25</td>
+                  <td data-label="Ação">Reforçar pico e ajustar despacho.</td>
+                </tr>
+                <tr>
+                  <td data-label="Ocorrência">Pedido/item errado</td>
+                  <td data-label="Qtd." class="right bold">2</td>
+                  <td data-label="Ação">Conferência antes da saída.</td>
+                </tr>
+                <tr>
+                  <td data-label="Ocorrência">Ninguém recebe</td>
+                  <td data-label="Qtd." class="right bold">2</td>
+                  <td data-label="Ação">Validar contato em caso de dúvida.</td>
+                </tr>
+                <tr>
+                  <td data-label="Ocorrência">Pedido incompleto</td>
+                  <td data-label="Qtd." class="right bold">1</td>
+                  <td data-label="Ação">Conferência de embalagem.</td>
+                </tr>
+                <tr>
+                  <td data-label="Ocorrência">Faltou informação</td>
+                  <td data-label="Qtd." class="right bold">1</td>
+                  <td data-label="Ação">Checagem antes do envio.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>Cancelamentos</h3>
+          <p class="lead">Foram 5 cancelamentos, somando R$ 167,95. Nem todos indicam falha direta da logística.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Motivo</th>
+                  <th class="right">Qtd.</th>
+                  <th>Leitura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Motivo">Pedido ou item veio errado</td>
+                  <td data-label="Qtd." class="right bold">2</td>
+                  <td data-label="Leitura">Ponto de conferência da loja.</td>
+                </tr>
+                <tr>
+                  <td data-label="Motivo">Pedido cancelado por atraso</td>
+                  <td data-label="Qtd." class="right bold">1</td>
+                  <td data-label="Leitura">Ligado ao pico e tempo total.</td>
+                </tr>
+                <tr>
+                  <td data-label="Motivo">Cliente não poderia receber</td>
+                  <td data-label="Qtd." class="right bold">1</td>
+                  <td data-label="Leitura">Não indica falha direta da logística.</td>
+                </tr>
+                <tr>
+                  <td data-label="Motivo">Problema com pagamento</td>
+                  <td data-label="Qtd." class="right bold">1</td>
+                  <td data-label="Leitura">Ocorrência financeira.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info">
+            <strong>Proteção:</strong> conferir pedido, validar contato quando houver dúvida e confirmar pagamento em pedidos sensíveis.
+          </div>
+        </div>
+
+        <div class="card col-7">
+          <h3>Produtos campeões</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th class="right">Pedidos</th>
+                  <th class="right">Qtd.</th>
+                  <th class="right">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td data-label="Produto">Frango com Requeijão 21cm</td><td data-label="Pedidos" class="right bold">54</td><td data-label="Qtd." class="right">72</td><td data-label="Valor" class="right">R$ 1.133,00</td></tr>
+                <tr><td data-label="Produto">Queijo 21cm</td><td data-label="Pedidos" class="right bold">25</td><td data-label="Qtd." class="right">37</td><td data-label="Valor" class="right">R$ 592,00</td></tr>
+                <tr><td data-label="Produto">Carne 21cm</td><td data-label="Pedidos" class="right bold">25</td><td data-label="Qtd." class="right">36</td><td data-label="Valor" class="right">R$ 567,50</td></tr>
+                <tr><td data-label="Produto">Pizza 21cm</td><td data-label="Pedidos" class="right bold">24</td><td data-label="Qtd." class="right">27</td><td data-label="Valor" class="right">R$ 437,00</td></tr>
+                <tr><td data-label="Produto">Nutella 21cm</td><td data-label="Pedidos" class="right bold">14</td><td data-label="Qtd." class="right">18</td><td data-label="Valor" class="right">R$ 306,00</td></tr>
+                <tr><td data-label="Produto">Bauru 21cm</td><td data-label="Pedidos" class="right bold">12</td><td data-label="Qtd." class="right">16</td><td data-label="Valor" class="right">R$ 258,50</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-5">
+          <h3>Leitura de cardápio</h3>
+          <div class="list">
+            <div class="list-item"><strong>Destacar campeões</strong><span>Frango com Requeijão, Queijo, Carne e Pizza.</span></div>
+            <div class="list-item"><strong>Vender complementos</strong><span>Usar frases como “deixe do seu jeito” e “combine com adicionais”.</span></div>
+            <div class="list-item"><strong>Criar combos simples</strong><span>Pastel campeão + bebida.</span></div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>Baixa saída</h3>
+          <p class="lead">Itens com apenas 1 pedido devem ser revisados.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Produto</th><th class="right">Pedidos</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Produto">X Egg</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">Combo Família 5 Pastéis + Coca 2L</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">Double Misto Quente</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">Mini Especial Atum Cremoso</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">Mini Especial Frango Cremoso</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">Chocolate Branco com Morango</td><td data-label="Pedidos" class="right bold">1</td></tr>
+                <tr><td data-label="Produto">X Burguer</td><td data-label="Pedidos" class="right bold">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>Sem saída</h3>
+          <div class="metric">
+            <span>Produto zerado no período</span>
+            <strong>Especial Carne Seca 31cm</strong>
+            <p>Revisar foto, nome, preço e posição antes de excluir.</p>
+          </div>
+          <div class="callout warn">
+            <strong>Leitura:</strong> produto com baixa saída não precisa ser removido automaticamente. Primeiro revisar apresentação, preço, foto e posição no cardápio.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="kicker">05 | Fechamento e próximo passo</span>
+        <h2>Transparência no fechamento e plano simples</h2>
+        <p class="lead">O desconto aparece no total, e o plano mostra exatamente o que vamos acompanhar na próxima semana.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Fechamento</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Item</th><th class="right">Valor</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Item">Diárias</td><td data-label="Valor" class="right bold">R$ 890,00</td></tr>
+                <tr><td data-label="Item">Taxa de entrega</td><td data-label="Valor" class="right bold">R$ 2.477,00</td></tr>
+                <tr><td data-label="Item">Subtotal</td><td data-label="Valor" class="right bold">R$ 3.367,00</td></tr>
+                <tr><td data-label="Item">Desconto aplicado: pedido 4608</td><td data-label="Valor" class="right bold green">- R$ 80,50</td></tr>
+                <tr><td data-label="Item" class="bold">Total final a pagar</td><td data-label="Valor" class="right bold red">R$ 3.286,50</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout good">
+            <strong>Desconto aplicado:</strong> o pedido 4608 foi entregue, porém o pagamento via PIX informado pelo cliente não foi localizado. Para ajuste do fechamento, foi aplicado o desconto de R$ 80,50.
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>Plano da próxima semana</h3>
+          <div class="list">
+            <div class="list-item"><strong>Manter 2 entregadores de segunda a quinta</strong><span>Base atual para dias de menor pressão.</span></div>
+            <div class="list-item"><strong>Usar 4 entregadores sexta, sábado e domingo sem taxa grátis</strong><span>Operação base para fim de semana normal.</span></div>
+            <div class="list-item"><strong>Subir para 5 entregadores se houver taxa grátis</strong><span>Promoção aumenta volume e exige mais folga.</span></div>
+            <div class="list-item"><strong>Proteger 18h às 22h</strong><span>Principal janela de risco para atraso.</span></div>
+            <div class="list-item"><strong>Conferir pedido antes da saída</strong><span>Reduz erro, pedido incompleto e cancelamento evitável.</span></div>
+            <div class="list-item"><strong>Revisar cardápio</strong><span>Destacar campeões e ajustar itens fracos.</span></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <div class="callout good">
+            <strong>Resumo final:</strong> a entrega própria continua fazendo sentido. O ajuste é reforçar o pico quando houver taxa grátis, organizar melhor o despacho, proteger a conferência dos pedidos e usar o cardápio para vender com mais foco.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">Osasco Express | Raio-X Semanal da Operação</footer>
+  </main>
+</body>
+</html>
